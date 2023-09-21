@@ -21,8 +21,18 @@
         <button onclick="botonLimpiar()" id="limpiar">Limpiar</button>
     </div>
 
+    <section id="reglas">
+        <h2>Reglas del Juego:</h2>
+        <ul>
+            <li>Si una célula está viva y tiene 2 o 3 vecinos vivos, sobrevive. De lo contrario, muere.</li>
+            <li>Si una célula está muerta y tiene exactamente 3 vecinos vivos, se convierte en una célula viva.</li>
+            <li>En todos los demás casos, una célula muere o permanece muerta.</li>
+        </ul>
+    </section>
+
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
