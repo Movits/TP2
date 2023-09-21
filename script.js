@@ -3,8 +3,8 @@ const btnIniciar = document.querySelector("#iniciar");
 const btnParar = document.querySelector("#parar");
 const btnLimpiar = document.querySelector("#limpiar");
 
-const MAX_FILA = 10;
-const MAX_COL = 10;
+let MAX_FILA = 10;
+let MAX_COL = 10;
 
 const VIVA = true;
 const MUERTA = false;
@@ -150,5 +150,19 @@ function actualizarTablero() {
         }
     }
 }
+
+function configurarMatriz() {
+    const inputFilas = document.querySelector("#input-filas").value;
+    const inputColumnas = document.querySelector("#input-columnas").value;
+
+    if(inputFilas && inputColumnas) {
+        MAX_FILA = parseInt(inputFilas);
+        MAX_COL = parseInt(inputColumnas);
+        main();
+    } else {
+        alert("Por favor, introduce valores válidos para las filas y las columnas.");
+    }
+}
+
 
 main();
