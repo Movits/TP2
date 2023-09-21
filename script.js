@@ -49,6 +49,7 @@ function botonParar() {
 function botonLimpiar() {
     initMatrizTablero();
     actualizarTablero();
+    botonParar();
 }
 
 // Inicializa la matriz del tablero
@@ -66,29 +67,29 @@ function initMatrizTablero() {
 // Genera la matriz de la siguiente generacion
 // Matriz temporaria para guardar la siguiente generacion
 function proximaGeneracion() {
-    let nextGen = [];
+    let proxGen = [];
     for (let fila = 0; fila < MAX_FILA; fila++) {
-        nextGen[fila] = [];
+        proxGen[fila] = [];
         for (let columna = 0; columna < MAX_COL; columna++) {
             let vecinasVivas = contarVecinasVivas(fila, columna);
             if (matrizTablero[fila][columna] == VIVA) {
                 if (vecinasVivas < 2 || vecinasVivas > 3) {
-                    nextGen[fila][columna] = MUERTA;
+                    proxGen[fila][columna] = MUERTA;
                 } else {
-                    nextGen[fila][columna] = VIVA;
+                    proxGen[fila][columna] = VIVA;
                 }
             } else {
                 if (vecinasVivas == 3) {
-                    nextGen[fila][columna] = VIVA;
+                    proxGen[fila][columna] = VIVA;
                 } else {
-                    nextGen[fila][columna] = MUERTA;
+                    proxGen[fila][columna] = MUERTA;
                 }
             }
         }
     }
     for (let fila = 0; fila < MAX_FILA; fila++) {
         for (let columna = 0; columna < MAX_COL; columna++) {
-            matrizTablero[fila][columna] = nextGen[fila][columna];
+            matrizTablero[fila][columna] = proxGen[fila][columna];
         }
     }
 }
