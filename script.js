@@ -6,6 +6,12 @@ const MAX_COL = 10;
 const VIVA = true;
 const MUERTA = false;
 
+function main() {
+    initMatrizTablero();
+    generarMatriz();
+}
+
+// Inicializa la matriz del tablero
 const matrizTablero = [];
 function initMatrizTablero() {
     for (let fila = 0; fila < MAX_FILA; fila++) {
@@ -14,6 +20,40 @@ function initMatrizTablero() {
             matrizTablero[fila][columna] = MUERTA;
         }
     }
+}
+
+function proximaGeneracion() {
+    for (let fila = 0; fila < MAX_FILA; fila++) {
+        for (let columna = 0; columna < MAX_COL; columna++) {
+            let vecinasVivas = contarVecinasVivas(fila, columna);
+            if (matrizTablero[fila][columna] == VIVA) {
+                if (vecinasVivas < 2 || vecinasVivas > 3) {
+                    matrizTablero[fila][columna] = MUERTA;
+                }
+            } else {
+                if (vecinasVivas == 3) {
+                    matrizTablero[fila][columna] = VIVA;
+                }
+            }
+        }
+    }
+}
+
+function contarVecinasVivas(fila, columna) {
+    let vecinasVivas = 0;
+    for (let i = fila - 1; i <= fila + 1; i++) {
+        for (let j = columna - 1; j <= columna + 1; j++) {
+            if (i >= 0 && i < MAX_FILA && j >= 0 && j < MAX_COL) {
+                if (matrizTablero[i][j] == VIVA) {
+                    vecinasVivas++;
+                }
+            }
+        }
+    }
+    if (matrizTablero[fila][columna] == VIVA) {
+        vecinasVivas--;
+    }
+    return vecinasVivas;
 }
 
 // Genera el Tablero de la pagina
@@ -38,4 +78,4 @@ function agregarColumnas(fila) {
     return columnasGeneradasHtml;
 }
 
-generarMatriz();
+main();
