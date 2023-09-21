@@ -1,4 +1,7 @@
 const divTablero = document.querySelector("#tablero");
+const btnIniciar = document.querySelector("#iniciar");
+const btnParar = document.querySelector("#parar");
+const btnLimpiar = document.querySelector("#limpiar");
 
 const MAX_FILA = 10;
 const MAX_COL = 10;
@@ -29,6 +32,28 @@ function agregarEventosClick() {
             });
         }
     }
+}
+
+function botonIniciar() {
+    btnIniciar.addEventListener("click", function() {
+        setInterval(function() {
+            proximaGeneracion();
+            actualizarTablero();
+        }, 1000);
+    });
+}
+
+function botonParar() {
+    btnParar.addEventListener("click", function() {
+        clearInterval();
+    });
+}
+
+function botonLimpiar() {
+    btnLimpiar.addEventListener("click", function() {
+        initMatrizTablero();
+        actualizarTablero();
+    });
 }
 
 // Inicializa la matriz del tablero

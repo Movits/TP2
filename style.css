@@ -34,3 +34,10 @@ h1{
     place-content: center;
     margin-top: 5vh;
 }
+
+#botones{
+    display: flex;
+    place-content: center;
+    margin-top: 3vh;
+    gap: 5px;
+}
