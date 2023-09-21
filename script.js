@@ -9,6 +9,26 @@ const MUERTA = false;
 function main() {
     initMatrizTablero();
     generarMatriz();
+    agregarEventosClick();
+    proximaGeneracion();
+    actualizarTablero();
+}
+
+// Agrega el evento click a cada casilla
+function agregarEventosClick() {
+    for (let fila = 0; fila < MAX_FILA; fila++) {
+        for (let columna = 0; columna < MAX_COL; columna++) {
+            let casilla = document.querySelector("#casilla-" + fila + "-" + columna);
+            casilla.addEventListener("click", function() {
+                if (matrizTablero[fila][columna] == VIVA) {
+                    matrizTablero[fila][columna] = MUERTA;
+                } else {
+                    matrizTablero[fila][columna] = VIVA;
+                }
+                actualizarTablero();
+            });
+        }
+    }
 }
 
 // Inicializa la matriz del tablero
