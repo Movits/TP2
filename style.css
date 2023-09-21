@@ -2,11 +2,11 @@ body{
     background-color: rgb(117, 162, 214);
 }
 
-.viva{
+.casilla.viva{
     background-color: black;
 }
 
-.muerta{
+.casilla.muerta{
     background-color: whitesmoke;
 }
 

@@ -34,26 +34,21 @@ function agregarEventosClick() {
     }
 }
 
+let intervalo;
 function botonIniciar() {
-    btnIniciar.addEventListener("click", function() {
-        setInterval(function() {
-            proximaGeneracion();
-            actualizarTablero();
-        }, 1000);
-    });
+    intervalo = setInterval(function() {
+        proximaGeneracion();
+        actualizarTablero();
+    }, 1000);
 }
 
 function botonParar() {
-    btnParar.addEventListener("click", function() {
-        clearInterval();
-    });
+    clearInterval(intervalo);
 }
 
 function botonLimpiar() {
-    btnLimpiar.addEventListener("click", function() {
-        initMatrizTablero();
-        actualizarTablero();
-    });
+    initMatrizTablero();
+    actualizarTablero();
 }
 
 // Inicializa la matriz del tablero
