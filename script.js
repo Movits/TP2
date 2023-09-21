@@ -62,23 +62,37 @@ function initMatrizTablero() {
     }
 }
 
+
 // Genera la matriz de la siguiente generacion
+// Matriz temporaria para guardar la siguiente generacion
 function proximaGeneracion() {
+    let nextGen = [];
     for (let fila = 0; fila < MAX_FILA; fila++) {
+        nextGen[fila] = [];
         for (let columna = 0; columna < MAX_COL; columna++) {
             let vecinasVivas = contarVecinasVivas(fila, columna);
             if (matrizTablero[fila][columna] == VIVA) {
                 if (vecinasVivas < 2 || vecinasVivas > 3) {
-                    matrizTablero[fila][columna] = MUERTA;
+                    nextGen[fila][columna] = MUERTA;
+                } else {
+                    nextGen[fila][columna] = VIVA;
                 }
             } else {
                 if (vecinasVivas == 3) {
-                    matrizTablero[fila][columna] = VIVA;
+                    nextGen[fila][columna] = VIVA;
+                } else {
+                    nextGen[fila][columna] = MUERTA;
                 }
             }
         }
     }
+    for (let fila = 0; fila < MAX_FILA; fila++) {
+        for (let columna = 0; columna < MAX_COL; columna++) {
+            matrizTablero[fila][columna] = nextGen[fila][columna];
+        }
+    }
 }
+
 
 // Actualiza el tablero con la matriz de la siguiente generacion
 function contarVecinasVivas(fila, columna) {
@@ -127,8 +141,10 @@ function actualizarTablero() {
             let casilla = document.querySelector("#casilla-" + fila + "-" + columna);
             if (matrizTablero[fila][columna] == VIVA) {
                 casilla.classList.add("viva");
+                casilla.classList.remove("muerta");
             } else {
                 casilla.classList.remove("viva");
+                casilla.classList.add("muerta");
             }
         }
     }
