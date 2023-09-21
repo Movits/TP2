@@ -34,6 +34,7 @@ function agregarEventosClick() {
     }
 }
 
+// Agrega los eventos a los botones
 let intervalo;
 function botonIniciar() {
     intervalo = setInterval(function() {
@@ -151,6 +152,7 @@ function actualizarTablero() {
     }
 }
 
+// Configura la matriz del tablero con los valores ingresados por el usuario
 function configurarMatriz() {
     const inputFilas = document.querySelector("#input-filas").value;
     const inputColumnas = document.querySelector("#input-columnas").value;
