@@ -12,8 +12,8 @@ body {
 }
 
 .casilla {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     display: grid;
     place-content: center;
@@ -23,14 +23,45 @@ body {
 #tablero {
     display: grid;
     place-content: center;
-    margin-top: 5vh;
+    margin-top: 2vh;
 }
 
 #config-matriz {
-    display: grid;
-    place-content: center;
-    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 3vh;
+    padding: 10px;
+    border-radius: 8px;
 }
+
+#config-matriz label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+#config-matriz input {
+    width: 212px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#config-matriz button {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#config-matriz button:hover {
+    background-color: #0056b3;
+}
+
 
 h1 {
     display: grid;
@@ -61,19 +92,20 @@ button:hover {
     gap: 15px;
 }
 
-
-
 #iniciar {
+    width: 173px;
     background-color: #6db85b;
     color: white;
 }
 
 #parar {
+    width: 173px;
     background-color: #d9534f;
     color: white;
 }
 
 #limpiar {
+    width: 173px;
     background-color: rgba(255, 255, 255, 0.8);
     color: rgb(117, 162, 214);
     border: 1px solid rgb(117, 162, 214);
@@ -81,12 +113,13 @@ button:hover {
 
 #reglas {
     margin: 20px auto;
-    width: 70%;
+    width: 550px;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     color: #333;
+    margin-top: 3vh;
 }
 
 #reglas h2 {

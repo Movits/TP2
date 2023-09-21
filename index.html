@@ -13,14 +13,6 @@
     
     <h1>Juego de la Vida</h1>
 
-    <div id="tablero"></div>
-
-    <div id="botones">
-        <button onclick="botonIniciar()" id="iniciar">Iniciar</button>
-        <button onclick="botonParar()" id="parar">Parar</button>
-        <button onclick="botonLimpiar()" id="limpiar">Limpiar</button>
-    </div>
-
     <section id="reglas">
         <h2>Reglas del Juego:</h2>
         <ul>
@@ -29,6 +21,21 @@
             <li>En todos los demás casos, una célula muere o permanece muerta.</li>
         </ul>
     </section>
+
+    <div id="config-matriz">
+        <input type="number" id="input-filas" placeholder="Número de filas" min="5" max="50">
+        <input type="number" id="input-columnas" placeholder="Número de columnas" min="5" max="50">
+        <button onclick="configurarMatriz()" class="btn btn-info">Configurar</button>
+    </div>
+    
+
+    <div id="tablero"></div>
+
+    <div id="botones">
+        <button onclick="botonIniciar()" id="iniciar">Iniciar</button>
+        <button onclick="botonParar()" id="parar">Parar</button>
+        <button onclick="botonLimpiar()" id="limpiar">Limpiar</button>
+    </div>
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
