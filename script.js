@@ -53,7 +53,7 @@ function botonLimpiar() {
     botonParar();
 }
 
-// Inicializa la matriz del tablero
+// Inicializa una matriz 2D para el tablero
 const matrizTablero = [];
 function initMatrizTablero() {
     for (let fila = 0; fila < MAX_FILA; fila++) {
@@ -64,8 +64,6 @@ function initMatrizTablero() {
     }
 }
 
-
-// Genera la matriz de la siguiente generacion
 // Matriz temporaria para guardar la siguiente generacion
 function proximaGeneracion() {
     let proxGen = [];
@@ -95,8 +93,7 @@ function proximaGeneracion() {
     }
 }
 
-
-// Actualiza el tablero con la matriz de la siguiente generacion
+// Verifica el estado de las celulas
 function contarVecinasVivas(fila, columna) {
     let vecinasVivas = 0;
     for (let i = fila - 1; i <= fila + 1; i++) {
@@ -126,7 +123,6 @@ function generarMatriz() {
     }
 }
 
-// Genera las casillas correspondientes a la fila actual
 function agregarColumnas(fila) {
     let columnasGeneradasHtml = "";
     for (let columna = 0; columna < MAX_COL; columna++) {
@@ -136,7 +132,7 @@ function agregarColumnas(fila) {
     return columnasGeneradasHtml;
 }
 
-// Actualiza el tablero con la matriz de la siguiente generacion
+// Actualiza las celulas del tablero en css
 function actualizarTablero() {
     for (let fila = 0; fila < MAX_FILA; fila++) {
         for (let columna = 0; columna < MAX_COL; columna++) {
@@ -164,6 +160,17 @@ function configurarMatriz() {
     } else {
         alert("Por favor, introduce valores válidos para las filas y las columnas.");
     }
+}
+
+function guardarTablero() {
+    let tablerosGuardados = [];
+    let i = 1;
+    localStorage.setItem(`Tablero${i}`, JSON.stringify(matrizTablero));
+    i++
+}
+
+function limpiarTablerosGuardados() {
+    localStorage.clear();
 }
 
 
