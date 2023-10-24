@@ -93,22 +93,33 @@ button:hover {
 }
 
 #iniciar {
-    width: 173px;
+    width: 126px;
     background-color: #6db85b;
     color: white;
+    margin-bottom: 10px;
 }
 
 #parar {
-    width: 173px;
+    width: 126px;
     background-color: #d9534f;
     color: white;
+    margin-bottom: 10px;
 }
 
 #limpiar {
-    width: 173px;
-    background-color: rgba(255, 255, 255, 0.8);
-    color: rgb(117, 162, 214);
+    width: 126px;
+    background-color: lightskyblue;
+    color: whitesmoke;
     border: 1px solid rgb(117, 162, 214);
+    margin-bottom: 10px;
+}
+
+#mostrarTableros {
+    width: 126px;
+    background-color: lightgray;
+    color: darkgray;
+    border: 1px solid rgb(117, 162, 214);
+    margin-bottom: 10px;
 }
 
 #reglas {

@@ -162,10 +162,12 @@ function configurarMatriz() {
     }
 }
 
+//Botones para localStorage
 function guardarTablero() {
-    let tablerosGuardados = [];
     let i = 1;
-    localStorage.setItem(`Tablero${i}`, JSON.stringify(matrizTablero));
+    let tablero = localStorage.setItem(`Tablero${i}`, JSON.stringify(matrizTablero));
+    let tablerosGuardados = [];
+    tablerosGuardados.push(tablero);
     i++
 }
 
@@ -173,5 +175,8 @@ function limpiarTablerosGuardados() {
     localStorage.clear();
 }
 
+function cargarTablero() {
+    
+}
 
 main();
