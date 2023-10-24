@@ -41,16 +41,19 @@ function botonIniciar() {
         proximaGeneracion();
         actualizarTablero();
     }, 1000);
+    btnIniciar.disabled = true;
 }
 
 function botonParar() {
     clearInterval(intervalo);
+    btnIniciar.disabled = false;
 }
 
 function botonLimpiar() {
     initMatrizTablero();
     actualizarTablero();
     botonParar();
+    btnIniciar.disabled = false;
 }
 
 // Inicializa una matriz 2D para el tablero
