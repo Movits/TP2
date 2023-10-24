@@ -35,7 +35,31 @@
         <button onclick="botonIniciar()" id="iniciar">Iniciar</button>
         <button onclick="botonParar()" id="parar">Parar</button>
         <button onclick="botonLimpiar()" id="limpiar">Limpiar</button>
-        <button onclick="location.href='tableros.html'" id="mostrarTableros">Mostrar Tableros</button>
+        <button id="mostrarTableros" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            Mostrar Tableros
+        </button>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Tableros Salvos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    <!-- Poner los tableros salvos del localStorage aca -->
+                </div>
+                <div class="dropdown mt-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Acciones
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Salvar Tablero Actual</a></li>
+                        <li><a class="dropdown-item" href="#">Remover un Tablero</a></li>
+                        <li><a class="dropdown-item" href="#">Limpiar Todos los Tableros</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

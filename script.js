@@ -176,7 +176,7 @@ function limpiarTablerosGuardados() {
 }
 
 function cargarTablero() {
-    
+
 }
 
 main();
