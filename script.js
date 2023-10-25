@@ -196,12 +196,23 @@ function generarImgTablero() {
     return canvas.toDataURL();
 }
 
-function cargarTablero(i) {
+function cargarTablero(index) {
     let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
-    if (tablerosGuardados[i]) {
-        matrizTablero = tablerosGuardados[i].board;
-        actualizarTablero();
+
+    if (index < 0 || index >= tablerosGuardados.length) {
+        console.error('Invalid index provided:', index);
+        return;
     }
+
+    const tableroSeleccionado = tablerosGuardados[index];
+    
+    if (!tableroSeleccionado || !tableroSeleccionado.board) {
+        console.error('Corrupted data or missing matrix in the selected board:', tableroSeleccionado);
+        return;
+    }    
+
+    matrizTablero = tableroSeleccionado.board;
+    actualizarTablero();
 }
 
 function mostrarTablerosGuardados() {
