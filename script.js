@@ -201,20 +201,46 @@ function cargarTablero(i) {
     }
 }
 
-function displayTablerosGuardados() {
+function mostrarTablerosGuardados() {
     let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
     let contenedorTableros = document.querySelector(".offcanvas-body > div");
     contenedorTableros.innerHTML = '';
-    tablerosGuardados.forEach((tablerosGuardados, index) => {
-
-        let tableroElem = document.createElement('div');
-        tableroElem.innerHTML = `<img src="${tablerosGuardados.image}" alt="Board ${index + 1}" />`;
-        tableroElem.addEventListener("click", function() {
-            cargarTablero(index);
+    
+    tablerosGuardados.forEach((tableroGuardado, index) => {
+        let elemTablero = document.createElement('div');
+        elemTablero.classList.add("saved-board");
+        
+        let imagenElem = document.createElement('img');
+        imagenElem.src = tableroGuardado.imagen;
+        imagenElem.alt = "Tablero " + (i + 1);
+        imagenElem.addEventListener("click", function() {
+            cargarTablero(i);
         });
-        boardsContainer.appendChild(tableroElem);
+
+        let btnEliminar = document.createElement('button');
+        btnEliminar.innerHTML = "X";
+        btnEliminar.classList.add("delete-board-btn");
+        btnEliminar.addEventListener("click", function(event) {
+            event.stopPropagation();
+            eliminarTablero(i);
+            mostrarTablerosGuardados();
+        });
+
+        elemTablero.appendChild(imagenElem);
+        elemTablero.appendChild(btnEliminar);
+        contenedorTableros.appendChild(elemTablero);
     });
 }
+
+function eliminarTablero(i) {
+    let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
+    if (tablerosGuardados[i]) {
+        tablerosGuardados.splice(i, 1);
+        localStorage.setItem("tablerosGuardados", JSON.stringify(tablerosGuardados));
+    }
+}
+
+
 
 
 function limpiarTablerosGuardados() {

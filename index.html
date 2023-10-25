@@ -48,15 +48,10 @@
                 <div>
                     <!-- Poner los tableros salvos del localStorage aca -->
                 </div>
-                <div class="dropdown mt-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        Acciones
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Salvar Tablero Actual</a></li>
-                        <li><a class="dropdown-item" href="#">Remover un Tablero</a></li>
-                        <li><a class="dropdown-item" href="#">Limpiar Todos los Tableros</a></li>
-                    </ul>
+                <div id="botones-localstorage">
+                    <button class="btn btn-secondary" onclick="guardarTablero()">Guardar Tablero Actual</button>
+                    <button class="btn btn-secondary" onclick="limpiarTablerosGuardados()">Limpiar Todos los Tableros</button>
+                </div>
                 </div>
             </div>
         </div>
