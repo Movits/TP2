@@ -167,19 +167,58 @@ function configurarMatriz() {
 
 //Botones para localStorage
 function guardarTablero() {
-    let i = 1;
-    let tablero = localStorage.setItem(`Tablero${i}`, JSON.stringify(matrizTablero));
-    let tablerosGuardados = [];
-    tablerosGuardados.push(tablero);
-    i++
+    let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
+    tablerosGuardados.push({
+        tablero: matrizTablero,
+        imagen: generarImagen()
+    });
+    localStorage.setItem("tablerosGuardados", JSON.stringify(tablerosGuardados));
 }
+
+function generarImgTablero() {
+    const canvas = document.createElement("canvas");
+    canvas.width = MAX_COL * 10;
+    canvas.height = MAX_FILA * 10;
+    const ctx = canvas.getContext("2d");
+
+    for (let fila = 0; fila < MAX_FILA; fila++) {
+        for (let columna = 0; columna < MAX_COL; columna++) {
+            if (matrizTablero[fila][columna] == VIVA) {
+                ctx.fillStyle = "black";
+            } else {
+                ctx.fillStyle = "white";
+            }
+            ctx.fillRect(columna * 10, fila * 10, 10, 10);
+        }
+    }
+}
+
+function cargarTablero(i) {
+    let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
+    if (tablerosGuardados[i]) {
+        matrizTablero = tablerosGuardados[i].board;
+        actualizarTablero();
+    }
+}
+
+function displayTablerosGuardados() {
+    let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
+    let contenedorTableros = document.querySelector(".offcanvas-body > div");
+    contenedorTableros.innerHTML = '';
+    tablerosGuardados.forEach((tablerosGuardados, index) => {
+
+        let tableroElem = document.createElement('div');
+        tableroElem.innerHTML = `<img src="${tablerosGuardados.image}" alt="Board ${index + 1}" />`;
+        tableroElem.addEventListener("click", function() {
+            cargarTablero(index);
+        });
+        boardsContainer.appendChild(tableroElem);
+    });
+}
+
 
 function limpiarTablerosGuardados() {
     localStorage.clear();
-}
-
-function cargarTablero() {
-
 }
 
 main();
