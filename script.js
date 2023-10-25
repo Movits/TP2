@@ -15,6 +15,7 @@ function main() {
     agregarEventosClick();
     proximaGeneracion();
     actualizarTablero();
+    mostrarTablerosGuardados();
 }
 
 // Agrega el evento click a cada casilla
@@ -191,6 +192,8 @@ function generarImgTablero() {
             ctx.fillRect(columna * 10, fila * 10, 10, 10);
         }
     }
+
+    return canvas.toDataURL();
 }
 
 function cargarTablero(i) {
@@ -232,10 +235,10 @@ function mostrarTablerosGuardados() {
     });
 }
 
-function eliminarTablero(i) {
+function eliminarTablero(index) {
     let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
-    if (tablerosGuardados[i]) {
-        tablerosGuardados.splice(i, 1);
+    if (tablerosGuardados[index]) {
+        tablerosGuardados.splice(index, 1);
         localStorage.setItem("tablerosGuardados", JSON.stringify(tablerosGuardados));
     }
 }
