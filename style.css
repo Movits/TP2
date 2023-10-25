@@ -142,3 +142,21 @@ button:hover {
     list-style-type: square;
     padding-left: 20px;
 }
+
+.saved-board {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.delete-board-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}

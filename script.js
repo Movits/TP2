@@ -170,7 +170,7 @@ function guardarTablero() {
     let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
     tablerosGuardados.push({
         tablero: matrizTablero,
-        imagen: generarImagen()
+        imagen: generarImgTablero()
     });
     localStorage.setItem("tablerosGuardados", JSON.stringify(tablerosGuardados));
 }
@@ -210,23 +210,23 @@ function mostrarTablerosGuardados() {
         let elemTablero = document.createElement('div');
         elemTablero.classList.add("saved-board");
         
-        let imagenElem = document.createElement('img');
-        imagenElem.src = tableroGuardado.imagen;
-        imagenElem.alt = "Tablero " + (i + 1);
-        imagenElem.addEventListener("click", function() {
-            cargarTablero(i);
+        let imagenElemento = document.createElement('img');
+        imagenElemento.src = tableroGuardado.imagen;
+        imagenElemento.alt = "Tablero " + (index + 1);
+        imagenElemento.addEventListener("click", function() {
+            cargarTablero(index);
         });
-
+        
         let btnEliminar = document.createElement('button');
         btnEliminar.innerHTML = "X";
         btnEliminar.classList.add("delete-board-btn");
         btnEliminar.addEventListener("click", function(event) {
             event.stopPropagation();
-            eliminarTablero(i);
+            eliminarTablero(index);
             mostrarTablerosGuardados();
         });
 
-        elemTablero.appendChild(imagenElem);
+        elemTablero.appendChild(imagenElemento);
         elemTablero.appendChild(btnEliminar);
         contenedorTableros.appendChild(elemTablero);
     });
