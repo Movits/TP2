@@ -58,7 +58,7 @@ function botonLimpiar() {
 }
 
 // Inicializa una matriz 2D para el tablero
-const matrizTablero = [];
+let matrizTablero = [];
 function initMatrizTablero() {
     for (let fila = 0; fila < MAX_FILA; fila++) {
         matrizTablero[fila] = [];
@@ -185,7 +185,7 @@ function generarImgTablero() {
     for (let fila = 0; fila < MAX_FILA; fila++) {
         for (let columna = 0; columna < MAX_COL; columna++) {
             if (matrizTablero[fila][columna] == VIVA) {
-                ctx.fillStyle = "black";
+                ctx.fillStyle = "orange";
             } else {
                 ctx.fillStyle = "white";
             }
@@ -196,10 +196,13 @@ function generarImgTablero() {
     return canvas.toDataURL();
 }
 
-function cargarTablero(i) {
+function cargarTablero(index) {
     let tablerosGuardados = JSON.parse(localStorage.getItem("tablerosGuardados")) || [];
-    if (tablerosGuardados[i]) {
-        matrizTablero = tablerosGuardados[i].board;
+    if (tablerosGuardados[index]) {
+        console.log(matrizTablero);
+        matrizTablero = tablerosGuardados[index].tablero;
+        console.log(matrizTablero);
+        console.log();
         actualizarTablero();
     }
 }
